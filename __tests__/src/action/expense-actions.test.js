@@ -1,5 +1,4 @@
 import * as actions from '../../../src/action/expense-actions.js';
-// import reducer from '../../../src/reducer/expense.js';
 
 describe('action creators', () => {
 

@@ -21,7 +21,7 @@ class CategoryContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categories.categories,
+  categories: state.categories,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -5,8 +5,8 @@ import * as actions from '../../../src/action/expense-actions.js';
 describe('expense reducer', () => {
 
   it('state should be an empty array at start', () => {
-    const newState = reducer({},{payload: 'fake payload', type: 'fake action'});
-    expect(newState).toEqual({});
+    const newState = reducer([],{payload: 'fake payload', type: 'fake action'});
+    expect(newState).toEqual([]);
   });
 
   it('should add a note to state', () => {
@@ -16,18 +16,13 @@ describe('expense reducer', () => {
       price: 'price',
     };
 
-    let state = {
-      categories: [],
-      expenses: [],
-    };
+    const newState = reducer([], actions.expenseCreate(newExpense));
 
-    const newState = reducer(state, actions.expenseCreate(newExpense));
-
-    expect(newState.expenses[0].expense).toBe('expense');
-    expect(newState.expenses[0].price).toBe('price');
-    expect(newState.expenses[0].id).toBeDefined();
-    expect(newState.expenses[0].timeStamp  ).toBeDefined();
-    expect(newState.expenses[0].editing).toBeFalsy();
+    expect(newState[0].expense).toBe('expense');
+    expect(newState[0].price).toBe('price');
+    expect(newState[0].id).toBeDefined();
+    expect(newState[0].timeStamp  ).toBeDefined();
+    expect(newState[0].editing).toBeFalsy();
   });
 
   it('state should update an existing expense', () => {
@@ -37,15 +32,10 @@ describe('expense reducer', () => {
       price: 'price',
     };
 
-    let state = {
-      categories: [],
-      expenses: [],
-    };
-
-    const newState = reducer(state, actions.expenseCreate(newExpense));
+    const newState = reducer([], actions.expenseCreate(newExpense));
     
-    const id = newState.expenses[0].id;
-    const timeStamp = newState.expenses[0].timeStamp;
+    const id = newState[0].id;
+    const timeStamp = newState[0].timeStamp;
 
     let newerexpense = {
       expense: 'new expense',
@@ -57,10 +47,10 @@ describe('expense reducer', () => {
 
     const newerState = reducer(newState, actions.expenseUpdate(newerexpense));
 
-    expect(newerState.expenses.length).toBe(1);
-    expect(newerState.expenses[0].expense).toBe('new expense');
-    expect(newerState.expenses[0].price).toBe('new price');
-    expect(newerState.expenses[0].id).toBe(id);
+    expect(newerState.length).toBe(1);
+    expect(newerState[0].expense).toBe('new expense');
+    expect(newerState[0].price).toBe('new price');
+    expect(newerState[0].id).toBe(id);
   });
 
   it('should remove an existing expense', () => {
@@ -70,18 +60,13 @@ describe('expense reducer', () => {
       price: 'price',
     };
 
-    let state = {
-      categories: [],
-      expenses: [],
-    };
+    const newState = reducer([], actions.expenseCreate(newExpense));
 
-    const newState = reducer(state, actions.expenseCreate(newExpense));
-
-    expect(newState.expenses.length).toBe(1);
+    expect(newState.length).toBe(1);
 
     const newerState = reducer(newState, actions.expenseDestroy(newExpense));
 
-    expect(newerState.expenses.length).toBe(0);
+    expect(newerState.length).toBe(0);
   });
 
   it('should change a expenses editing key to be true', () => {
@@ -90,20 +75,16 @@ describe('expense reducer', () => {
       price: 'price',
     };
 
-    let state = {
-      categories: [],
-      expenses: [],
-    };
 
-    const newState = reducer(state, actions.expenseCreate(newExpense));
+    const newState = reducer([], actions.expenseCreate(newExpense));
 
-    expect(newState.expenses[0].edting).toBeFalsy();
+    expect(newState[0].edting).toBeFalsy();
 
-    let expense = newState.expenses[0];
+    let expense = newState[0];
 
     const newerState = reducer(newState, actions.editCurrent(expense));
 
-    expect(newerState.expenses[0].editing).toBeTruthy();
+    expect(newerState[0].editing).toBeTruthy();
   });
 
   it('should change a expenses editing key to be false', () => {
@@ -113,24 +94,19 @@ describe('expense reducer', () => {
       price: 'price',
     };
 
-    let state = {
-      categories: [],
-      expenses: [],
-    };
-    
-    const newState = reducer(state, actions.expenseCreate(newExpense));
+    const newState = reducer([], actions.expenseCreate(newExpense));
 
-    expect(newState.expenses[0].edting).toBeFalsy();
+    expect(newState[0].edting).toBeFalsy();
 
-    let expense = newState.expenses[0];
+    let expense = newState[0];
 
     const newerState = reducer(newState, actions.editCurrent(expense));
 
-    expect(newerState.expenses[0].editing).toBeTruthy();
+    expect(newerState[0].editing).toBeTruthy();
 
-    const newestState = reducer(newerState, actions.cancelBtn(newerState.expenses[0]));
+    const newestState = reducer(newerState, actions.cancelBtn(newerState[0]));
 
-    expect(newestState.expenses[0].editing).toBeFalsy();
+    expect(newestState[0].editing).toBeFalsy();
 
   });
 

@@ -43,7 +43,7 @@ class ExpenseContainer extends Component {
 }
 
 const matchStateToProps = state => ({
-  expenses: state.expenses.expenses,
+  expenses: state.expenses,
 });
 const matchDispatchToProps = dispatch => ({
   expenseCreate: expense => dispatch(expenseCreate(expense)),
