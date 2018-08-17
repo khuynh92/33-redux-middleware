@@ -1,0 +1,91 @@
+#category-list .editing {
+  background-color: #f8dbe7;
+  transition: 350ms; }
+
+#category-list .editing button {
+  height: 40px;
+  width: 70px;
+  background-color: rgba(229, 137, 137, 0.661); }
+
+#category-list .editing button:hover {
+  background-color: #e58989; }
+
+#category-list input[type=submit] {
+  cursor: pointer; }
+
+#category-list .editing form {
+  width: 60%; }
+
+#budget-container {
+  position: relative; }
+
+form input {
+  padding-left: 15px; }
+
+#budget-container:after {
+  position: absolute;
+  left: 6px;
+  top: 20px;
+  content: '$'; }
+
+#category-list {
+  list-style: none; }
+
+#category-list li {
+  margin-bottom: 2%;
+  padding: 2% 0% 2% 0%;
+  display: flex;
+  width: 350px;
+  background-color: #d2eaf3;
+  border-radius: 10px;
+  cursor: pointer; }
+
+#category-list li h4 {
+  display: inline;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #939292; }
+
+button:focus {
+  outline: 0; }
+
+#category-list li button {
+  align-self: center;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #eed1d1;
+  border: none;
+  border-radius: 5px;
+  transition: 300ms;
+  color: white; }
+
+#category-list li button:hover {
+  background-color: #e58989; }
+
+#category-list li button:active {
+  background-color: #da5757; }
+
+#category-list li p {
+  font-size: 14px;
+  margin: 2% 0% 0% 3%;
+  padding-top: 4%; }
+
+#category-list li * {
+  margin-left: 2%;
+  display: inline-block; }
+
+#updateText {
+  margin-left: 40px;
+  font-style: italic;
+  color: #979595; }
+
+#category-list li div {
+  width: 100%;
+  text-align: center; }
+
+#category-list li div h4, #category-list li div p, .category-name {
+  cursor: grab; }
+
+* {
+  font-family: Arial, Helvetica, sans-serif; }
+

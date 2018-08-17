@@ -1,0 +1,22 @@
+#expense-form input[type=text], #expense-form input[type=number]{
+  width: 40px;
+  font-size: 12px;
+  margin-right: 2px;
+}
+
+#expense-form  {
+  display: inline;
+  margin-left: 70px;
+  font-size: 12px;
+}
+
+#expense-form  input[type=submit] {
+  margin-top: 10px;
+  margin-left: 125px;
+  margin-right: 40px;
+}
+
+#expense-cancel {
+  width: 50px;
+  height: 20px;
+}

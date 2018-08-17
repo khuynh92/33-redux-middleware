@@ -1,58 +1,25 @@
-![cf](http://i.imgur.com/7v5ASc8.png) 33: Budget Tracker
-======
+[![Build Status](https://travis-ci.com/khuynh92/33-redux-middleware)](https://travis-ci.com/khuynh92/33-redux-middleware)
 
-## Submission Instructions
-  * Work in a fork of this repository
-  * Work in a branch on your fork
-  * Write all of your code in a directory named `lab-` + `<your name>` **e.g.** `lab-duncan`
-  * Submit a pull request to this repository
-  * Submit a link to your pull request on canvas
-  * Submit a question, observation, and how long you spent on canvas 
 
-## Learning Objectives
-* students will be able to create and implement custom middleware for redux
+heroku: http://khoa-33-redux-middleware.herokuapp.com  
+PR: https://github.com/khuynh92/33-redux-middleware/pull/1  
+Travis: https://travis-ci.com/khuynh92/33-redux-middleware    
 
-## Requirements
-#### Configuration  
-* Up to you, but should follow industry norms.
- 
-#### Feature Tasks
-* complete all remaining lab 31 and 32 feature tasks
-* add a `logger` middleware to your application's redux store
-* add validation to your redux reducers
+# LAB 33-redux-middleware
 
-Decide what validation you want to add to your reducers. Ideas might include:
+This project is a basic react redux app that keeps track of categories and budgets. The data will persist on refresh. All application state is stored in a redux store
 
-* Prevent an item from being added if it's over budget.
-* Prevent a budget from being created with zero or less dollars.
-* Prevent a budget or item from being created without a name.
+## To install
+Download this repo and in the root directory, type in to the CLI `npm i` to install all dependencies 
 
-## Example Validation Middleware
-Here's an example validating middleware for an application that implements a
-[kanban board](https://leankit.com/learn/kanban/kanban-board/).
+## To Run
+Type into the cli of the root directory `npm run watch` to start the react app. A new window will open in your default browser
 
-This middleware ensures that data attached to the action satisfies requirements,
-like having certain properties (id, content, categoryId).
+## How To Use the App
+To use the app, Click on Dashboard. Fill in the form with a Category, and Budget(numbers only). Upon submit, you will be displayed a list of created categories. To remove categories, simply click on the red x next to the title.
 
-```js
-const validateCard = store => next => action => {
-  const isCard = action.type && action.type.startsWith('CARD');
-    if (isCard) {
-      try {
-        const card = action.payload;
-        const notValid = !card.id || !card.content || !card.categoryID;
-        if (notValid) {
-          throw new Error('VALIDATION ERROR: card must include id, content, and categoryID');
-        } else {
-          return next(action);
-        }
-      } catch (err) {
-        console.error(err);
-    }
-  } else {
-    return next(action);
-  }
-}
+To Enter Category edit mode, `double click` a category. A new form will appear where you can change the contents of the category. Hit `update` to change the contents, or revert back to the old content with `cancel`
 
-export default validateCard;
-```
+To add an Expense to a Category, click the green + button and fill out the form. 
+
+To edit an Expense, double click on the expense you want to edit. Submit to change the expense, or cancel to revert to the previous state.
