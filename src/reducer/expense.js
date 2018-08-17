@@ -1,5 +1,3 @@
-// import defaultState from './defaultState.js';
-
 let initialState = localStorage && localStorage.state && JSON.parse(localStorage.state) || [];
 
 export default (state = initialState, action) => {
