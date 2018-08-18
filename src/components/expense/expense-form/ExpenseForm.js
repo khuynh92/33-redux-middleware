@@ -26,8 +26,8 @@ export default class ExpenseForm extends Component {
       this.props.onComplete(newExpense);
     } else {
       this.props.onComplete({ ...this.state, categoryID: this.props.category.id, editing: false });
+      this.props.handleCancel();
     }
-
     this.setState({
       expense: '',
       price: '',
