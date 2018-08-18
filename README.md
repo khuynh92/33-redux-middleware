@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.com/khuynh92/33-redux-middleware)](https://travis-ci.com/khuynh92/33-redux-middleware)
-
+[![Build Status](https://travis-ci.com/khuynh92/33-redux-middleware.svg?branch=master)](https://travis-ci.com/khuynh92/33-redux-middleware)
 
 heroku: http://khoa-33-redux-middleware.herokuapp.com  
 PR: https://github.com/khuynh92/33-redux-middleware/pull/1  

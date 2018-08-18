@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { categoryDestroy, editCurrent, categoryUpdate, cancelBtn } from '../../../action/category-actions.js';
+import { categoryDestroy, editCurrent, categoryUpdate, cancelBtn} from '../../../action/category-actions.js';
+import {massExpenseDestroy} from '../../../action/expense-actions.js';
 
 import CategoryForm from '../category-form/CategoryForm.js';
 import ExpenseContainer from '../../expense/expense-container/ExpenseContainer.js';
@@ -9,9 +10,15 @@ import ExpenseContainer from '../../expense/expense-container/ExpenseContainer.j
 import './CategoryItem.scss';
 
 class CategoryItem extends Component {
+
+  handleDelete = (category) => {
+    this.props.categoryDestroy(category);
+    this.props.massExpenseDestroy(category);
+  }
+  
   render() {
     return (
-      !this.props.editing ? <ListItem categoryDestroy={this.props.categoryDestroy} editCurrent={this.props.editCurrent} category={this.props.category} /> : <UpdateForm categoryUpdate={this.props.categoryUpdate} cancelBtn={this.props.cancelBtn} category={this.props.category} />
+      !this.props.editing ? <ListItem handleDelete={this.handleDelete} editCurrent={this.props.editCurrent} category={this.props.category} /> : <UpdateForm categoryUpdate={this.props.categoryUpdate} cancelBtn={this.props.cancelBtn} category={this.props.category} />
     );
   }
 }
@@ -19,7 +26,7 @@ class CategoryItem extends Component {
 const ListItem = (props) => {
   return (
     <li>
-      <button id="cat-delete" onClick={() => props.categoryDestroy(props.category)}>x</button>
+      <button id="cat-delete" onClick={() => props.handleDelete(props.category)}>x</button>
       <div onDoubleClick={() => props.editCurrent(props.category)}>
         <h4 className="category-name">{props.category.name}</h4>
         <p> Budget: ${props.category.budget}</p>
@@ -42,6 +49,7 @@ const mapDispatchToProps = dispatch => {
     categoryUpdate: category => dispatch(categoryUpdate(category)),
     categoryDestroy: category => dispatch(categoryDestroy(category)),
     editCurrent: category => dispatch(editCurrent(category)),
+    massExpenseDestroy: category => dispatch(massExpenseDestroy(category)),
   };
 };
 

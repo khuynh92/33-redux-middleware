@@ -29,11 +29,18 @@ export const editCurrent = expense => {
     type: 'EXPENSE_EDIT',
     payload: expense,
   };
-}
+};
 
 export const cancelBtn = expense => {
   return {
     type: 'CANCEL_BUTTON',
     payload: expense,
   };
-}
+};
+
+export const massExpenseDestroy = category => {
+  return {
+    type: 'MASS_EXPENSE_DESTROY',
+    payload: category,
+  };
+};

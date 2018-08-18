@@ -29,7 +29,7 @@ class ExpenseContainer extends Component {
       <React.Fragment>
         <h6>Expenses:</h6>
         <ul id="expenses">
-          {this.props.expenses.filter(expense => this.props.category.id === expense.categoryID).map(expense => <ExpenseItem expense={expense} key={expense.id} />)}
+          {this.props.expenses.filter(expense => this.props.category.id === expense.categoryID).map(expense => <ExpenseItem expense={expense} key={expense.id} handleCancel={this.handleCancel} />)}
         </ul>
 
         {this.state.showExpenseForm && <ExpenseForm buttonText='submit' onComplete={this.props.expenseCreate} category={this.props.category} handleCancel={this.handleCancel} />}
