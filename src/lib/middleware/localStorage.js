@@ -3,3 +3,4 @@ export default store => next => action => {
   localStorage.state = JSON.stringify(store.getState());
   return result;
 };
+
