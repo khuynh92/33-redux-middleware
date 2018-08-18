@@ -22,3 +22,12 @@ To Enter Category edit mode, `double click` a category. A new form will appear w
 To add an Expense to a Category, click the green + button and fill out the form. 
 
 To edit an Expense, double click on the expense you want to edit. Submit to change the expense, or cancel to revert to the previous state.
+
+
+## middleware
+
+33 introduces middleware that happens between dispatch and the new state. the middlewares introduced in this lab are
+ 1. Validating that expenses do not exceed budget
+ 2. Validate that forms are filled out correctly
+ 3. storing state in localstorage.
+ 4. logging state pre and post action.
